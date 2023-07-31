@@ -343,6 +343,11 @@ export function getIOSLocationManagerStatus(): CLAuthorizationStatus {
 	return CLLocationManager.authorizationStatus();
 }
 
+export function getIOSLocationManagerWithSuccessErrorOptions(successCallback, errorCallback, options = null): CLLocationManager {
+	const locListener = LocationListenerImpl.initWithLocationError(successCallback, errorCallback);
+	return getIOSLocationManager(locListener, options);
+}
+
 export function distance(loc1: Location, loc2: Location): number {
 	if (!loc1.ios) {
 		loc1.ios = clLocationFromLocation(loc1);

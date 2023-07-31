@@ -131,14 +131,13 @@ export function getCurrentLocation(options?: Options): Promise<Location>;
  */
 export function watchLocation(successCallback: successCallbackType, errorCallback: errorCallbackType, options?: Options): number;
 
-
 /**
  * Monitor for location permission change. Only on iOS!
  * @param permissionCallback gets called on location permission state change
  * @param errorCallback gets called on error
  * @returns {number} the watch id
  */
- export function watchPermissionStatus(permissionCallback: permissionCallbackType, errorCallback: errorCallbackType): number;
+export function watchPermissionStatus(permissionCallback: permissionCallbackType, errorCallback: errorCallbackType): number;
 
 /**
  * Stop monitoring for location change. Parameter expected is the watchId returned from `watchLocation`.
@@ -178,3 +177,10 @@ export function distance(loc1: Location, loc2: Location): number;
  * @returns {any} representing the CLAuthorizationStatus value. The status of the Location Authorization permission.
  */
 export function getIOSLocationManagerStatus(): any;
+
+/**
+ * ** iOS Only **
+ * Returns the CLLocationManager on iOS.
+ * @returns {CLLocationManager}
+ */
+export function getIOSLocationManagerWithSuccessErrorOptions(successCallback, errorCallback, options?: Options): CLLocationManager;
